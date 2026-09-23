@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Servicios de Constructora B&amp;M: movilidad urbana, construcción de pistas, veredas y sardineles, muros de contención y escaleras.">
+<title>Servicios | Constructora y Proyectos B&amp;M</title>
+
+<link rel="icon" type="image/png" href="images/logo-fondo-blanco.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Ir al contenido</a>
+<header id="siteHeader"></header>
+
+<main id="main" class="page">
+
+  <!-- PORTADA: el contenido lo arma js/main.js desde CONFIG.rubros y CONFIG.especialidades -->
+  <section class="especialidades" id="especialidades" aria-label="Especialidades"></section>
+
+  <div class="crumbs">
+    <div class="wrap"><a href="index.html">Inicio</a> › Servicios</div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="block__head reveal">
+        <h2 class="block__title">Líneas de trabajo</h2>
+        <div class="roadline"></div>
+        <p class="block__intro">Ejecutamos el proyecto completo: movimiento de tierras, obra, señalización y entrega.</p>
+      </div>
+
+      <div class="cards" id="serviciosGrid" data-detalle="true"></div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="block block--navy">
+    <div class="wrap">
+      <div class="block__head reveal">
+        <h2 class="block__title">Cómo ejecutamos una obra</h2>
+        <div class="roadline"></div>
+        <p class="block__intro">El mismo orden en cada proyecto, desde la firma del contrato hasta la liquidación.</p>
+      </div>
+
+      <ol class="cards" style="counter-reset:paso">
+        <li class="card-service reveal" style="background:transparent;border-color:rgba(255,255,255,0.18)">
+          <div class="card-service__icon">01</div>
+          <h3 class="card-service__title" style="color:#fff">Revisión del expediente</h3>
+          <p class="card-service__text" style="color:rgba(255,255,255,0.72)">Verificamos metrados, especificaciones técnicas y compatibilidad de planos antes de mover una máquina.</p>
+        </li>
+        <li class="card-service reveal" style="background:transparent;border-color:rgba(255,255,255,0.18)">
+          <div class="card-service__icon">02</div>
+          <h3 class="card-service__title" style="color:#fff">Trazo y replanteo</h3>
+          <p class="card-service__text" style="color:rgba(255,255,255,0.72)">Topografía en campo, niveles y alineamientos, con la coordinación previa a los vecinos de la zona.</p>
+        </li>
+        <li class="card-service reveal" style="background:transparent;border-color:rgba(255,255,255,0.18)">
+          <div class="card-service__icon">03</div>
+          <h3 class="card-service__title" style="color:#fff">Ejecución con control</h3>
+          <p class="card-service__text" style="color:rgba(255,255,255,0.72)">Ensayos de compactación y resistencia, protocolos de calidad y supervisión de seguridad en cada frente.</p>
+        </li>
+        <li class="card-service reveal" style="background:transparent;border-color:rgba(255,255,255,0.18)">
+          <div class="card-service__icon">04</div>
+          <h3 class="card-service__title" style="color:#fff">Entrega y liquidación</h3>
+          <p class="card-service__text" style="color:rgba(255,255,255,0.72)">Valorizaciones sustentadas, levantamiento de observaciones y cierre técnico-financiero del contrato.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block block--tint">
+    <div class="wrap" style="text-align:center">
+      <h2 class="block__title reveal">¿Necesita una cotización?</h2>
+      <p class="block__intro reveal" style="margin-inline:auto">Envíenos el expediente o los metrados y le respondemos con una propuesta.</p>
+      <p class="reveal" style="margin-top:2rem">
+        <a class="btn btn--primary" href="contacto.html">Solicitar cotización</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script src="js/proyectos.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>

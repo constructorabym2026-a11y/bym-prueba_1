@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Obras ejecutadas y en ejecución por Constructora B&amp;M en Los Olivos y Lima Norte: pistas, veredas, parques, escaleras y muros de contención.">
+<title>Proyectos | Constructora y Proyectos B&amp;M</title>
+
+<link rel="icon" type="image/png" href="images/logo-fondo-blanco.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Ir al contenido</a>
+<header id="siteHeader"></header>
+
+<main id="main" class="page">
+
+  <section class="banner" data-parallax="0.3" style="background-image:url('images/calles54.jpg')">
+    <div class="banner__inner">
+      <h1 class="banner__title">Proyectos</h1>
+      <p class="banner__sub">Obras ejecutadas y en ejecución</p>
+      <span class="banner__arrow" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <div class="crumbs">
+    <div class="wrap"><a href="index.html">Inicio</a> › Proyectos</div>
+  </div>
+
+  <section class="block">
+    <div class="wrap projects-layout">
+
+      <aside class="sidenav" aria-label="Filtrar obras por rubro">
+        <p class="sidenav__title">Rubro</p>
+        <div class="sidenav__list" id="sidenavList"></div>
+      </aside>
+
+      <div>
+        <div class="block__head reveal" style="margin-bottom:2rem">
+          <h2 class="block__title">Obras para la Municipalidad de Los Olivos</h2>
+          <div class="roadline"></div>
+          <p class="block__intro">Las obras con fotografía abren la galería completa al hacer clic.</p>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section class="block block--navy">
+    <div class="wrap">
+      <div class="block__head reveal">
+        <h2 class="block__title">Zona de trabajo</h2>
+        <div class="roadline"></div>
+        <p class="block__intro">Esquema de los distritos de Lima Norte donde ejecutamos o atendemos convocatorias.</p>
+      </div>
+
+      <div class="coverage">
+        <div class="reveal" id="mapaCobertura"></div>
+        <div class="coverage__detail reveal" id="coverageDetail"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script src="js/proyectos.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>

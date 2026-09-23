@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Constructora y Proyectos B&amp;M S.A.C. — pistas, veredas y movilidad urbana para municipalidades de Lima Norte. Certificada ISO 9001, 45001, 37001 y 14001.">
+<title>Constructora y Proyectos B&amp;M | Obras viales y urbanas en Lima Norte</title>
+
+<link rel="icon" type="image/png" href="images/logo_Ing._Edwin.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Ir al contenido</a>
+<header id="siteHeader"></header>
+
+<main id="main" class="page">
+
+  <!-- 1. PORTADA: la arma js/main.js desde CONFIG.hero -->
+  <section class="hero" id="hero" aria-label="Presentación"></section>
+
+  <!-- 2. ESPECIALIDADES: la arma js/main.js desde CONFIG.rubros.
+       data-encabezado="h2" porque la página ya tiene su h1 en el hero. -->
+  <section class="especialidades" id="especialidades" data-encabezado="h2" aria-label="Especialidades"></section>
+
+  <!-- 3. NOSOTROS: dos franjas seguidas -->
+  <section id="nosotros" aria-labelledby="nosotrosTitulo">
+
+    <!-- 3a. Quiénes somos -->
+    <div class="block">
+      <div class="wrap split">
+        <div class="split__text reveal">
+          <p class="eyebrow">Nosotros</p>
+          <h2 class="block__title" id="nosotrosTitulo">Una constructora de Lima Norte, trabajando en Lima Norte</h2>
+          <div class="roadline"></div>
+          <p style="margin-top:1.5rem">Constructora y Proyectos B&amp;M S.A.C. ejecuta obras civiles, instalaciones eléctricas e hidráulicas y servicios de ingeniería. Desde 2022 trabajamos con entidades públicas del cono norte.</p>
+          <p>Nuestras obras están en Los Olivos e Independencia: pistas, veredas, sardineles, parques, escaleras y muros de contención en asentamientos humanos y urbanizaciones.</p>
+          <a class="btn btn--outline" style="margin-top:1.5rem" href="nosotros.html">Conocer la empresa</a>
+        </div>
+
+        <div class="split__media reveal">
+          <img src="images/equipo_1.jpg" alt="Equipo de Constructora B&amp;M en obra" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 4. CERTIFICACIONES -->
+  <section class="block block--tint">
+    <div class="wrap">
+      <div class="block__head block__head--center reveal">
+        <h2 class="block__title">Certificaciones vigentes</h2>
+        <div class="roadline"></div>
+        <p class="block__intro">Cuatro sistemas de gestión certificados, con documento descargable.</p>
+      </div>
+      <div class="cert-list" id="certList"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script src="js/proyectos.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>

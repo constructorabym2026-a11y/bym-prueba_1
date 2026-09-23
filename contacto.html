@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Contacta a Constructora y Proyectos B&amp;M S.A.C. para cotizaciones de obras de pistas, veredas y movilidad urbana en Lima Norte.">
+<title>Contacto | Constructora y Proyectos B&amp;M</title>
+
+<link rel="icon" type="image/png" href="images/logo-fondo-blanco.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Ir al contenido</a>
+<header id="siteHeader"></header>
+
+<main id="main" class="page">
+
+  <section class="banner" data-parallax="0.3" style="background-image:url('images/presentacion_2.jpg')">
+    <div class="banner__inner">
+      <h1 class="banner__title">Contacto</h1>
+      <p class="banner__sub">Escríbanos y le respondemos en horario de oficina</p>
+      <span class="banner__arrow" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <div class="crumbs">
+    <div class="wrap"><a href="index.html">Inicio</a> › Contacto</div>
+  </div>
+
+  <section class="block">
+    <div class="wrap contact-grid">
+
+      <div class="reveal">
+        <h2 class="block__title">Cuéntenos su proyecto</h2>
+        <div class="roadline"></div>
+
+        <form id="contactForm" style="margin-top:2rem" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre y apellido</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="telefono">Teléfono <span class="field__hint">(opcional)</span></label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="rubro">Tipo de obra</label>
+            <select id="rubro" name="rubro">
+              <option value="">Seleccione una opción</option>
+              <option>Movilidad urbana</option>
+              <option>Construcción de pistas</option>
+              <option>Veredas y sardineles</option>
+              <option>Muros de contención o escaleras</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" required placeholder="Describa la obra, la entidad y el plazo estimado."></textarea>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Enviar consulta</button>
+        </form>
+      </div>
+
+      <div class="reveal">
+        <h2 class="block__title" style="font-size:var(--step-2)">Datos de contacto</h2>
+        <div class="roadline"></div>
+        <div class="contact-data" id="contactData" style="margin-top:2rem"></div>
+        <div class="map-embed" id="mapEmbed"></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script src="js/proyectos.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>
