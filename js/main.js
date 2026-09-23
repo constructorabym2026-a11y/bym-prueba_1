@@ -260,27 +260,119 @@ function renderServicios() {
     </article>`).join('');
 }
 
-/* ---------- 5. CERTIFICACIONES ---------- */
+/* ---------- CERTIFICACIONES: lista y detalle ---------- */
 function renderCertificaciones() {
-  const host = document.getElementById('certList');
+  const host = document.getElementById('certApp');
   if (!host) return;
 
-  host.innerHTML = CONFIG.certificaciones.map(c => `
-    <article class="cert reveal">
-      <div class="cert__seal"><i class="${c.icono}" aria-hidden="true"></i></div>
-      <div>
-        <h3 class="cert__title">${c.titulo}</h3>
-        <div class="cert__name">${c.nombre}</div>
-        <p class="cert__text">${c.descripcion}</p>
-        <div class="cert__data">
-          <span>Certificado ${c.numero}</span>
-          <span>Vigente hasta ${c.vigencia}</span>
-        </div>
+  const certs = CONFIG.certificaciones;
+
+  /* ----- Vista de lista ----- */
+  const verLista = () => {
+    host.innerHTML = `
+      <div class="block__head reveal">
+        <h2 class="block__title">Certificaciones vigentes</h2>
+        <div class="roadline"></div>
+        <p class="block__intro">Toca una certificación para ver el documento.</p>
       </div>
-      <a class="btn btn--outline" href="${c.pdf}" target="_blank" rel="noopener">
-        <i class="fas fa-file-pdf" aria-hidden="true"></i> Ver certificado
-      </a>
-    </article>`).join('');
+
+      <div class="certlist">
+        ${certs.map(c => `
+        <button type="button" class="certcard reveal" data-id="${c.id}">
+          <span class="certcard__seal">
+            ${c.sello
+              ? `<img src="${c.sello}" alt="" loading="lazy">`
+              : `<span class="seal__fallback"><b>ISO</b>${c.titulo.split(':')[0].replace('ISO ', '')}</span>`}
+          </span>
+          <span class="certcard__body">
+            <span class="certcard__title">Certificado ${c.titulo.split(':')[0]}</span>
+            <span class="certcard__name">${c.nombre}</span>
+            <span class="certcard__text">${c.descripcion}</span>
+          </span>
+          <span class="certcard__go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+        </button>`).join('')}
+      </div>`;
+
+    host.querySelectorAll('.certcard').forEach(t => {
+      t.addEventListener('click', () => { location.hash = t.dataset.id; });
+    });
+
+    if (typeof initReveal === 'function') initReveal();
+  };
+
+  /* ----- Vista de detalle ----- */
+  const verDetalle = (id) => {
+    const i = certs.findIndex(c => c.id === id);
+    if (i < 0) { verLista(); return; }
+    const c = certs[i];
+
+    host.innerHTML = `
+      <div class="certdetail">
+        <div class="certdetail__text">
+          <button type="button" class="certdetail__back" id="certBack">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i> Todas las certificaciones
+          </button>
+
+          <h2 class="certdetail__title">Certificado ${c.titulo.split(':')[0]}</h2>
+          <p class="certdetail__name">${c.nombre}</p>
+          <div class="roadline"></div>
+          <p class="certdetail__desc">${c.descripcion}</p>
+          <p class="certdetail__hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> Toca el certificado para verlo en grande</p>
+        </div>
+
+        <div class="certdetail__doc">
+          <button type="button" class="certdetail__arrow certdetail__arrow--prev" id="certPrev" aria-label="Certificación anterior">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+          </button>
+
+          <img class="certdetail__img" id="certImg" src="${c.imagen}" alt="Certificado ${c.titulo} de ${CONFIG.empresa.nombre}">
+
+          <button type="button" class="certdetail__arrow certdetail__arrow--next" id="certNext" aria-label="Certificación siguiente">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </button>
+
+          <p class="certdetail__counter">${i + 1} / ${certs.length}</p>
+        </div>
+      </div>`;
+
+    const ir = (paso) => {
+      location.hash = certs[(i + paso + certs.length) % certs.length].id;
+    };
+
+    document.getElementById('certBack').addEventListener('click', () => {
+      history.pushState('', '', location.pathname);   // quita el # sin recargar
+      verLista();
+      host.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.getElementById('certPrev').addEventListener('click', () => ir(-1));
+    document.getElementById('certNext').addEventListener('click', () => ir(1));
+
+    // La imagen se abre a pantalla completa en el visor del sitio
+    document.getElementById('certImg').addEventListener('click', () => {
+      Visor.abrir([c.imagen.replace('images/', '')], `Certificado ${c.titulo}`);
+    });
+  };
+
+  /* ----- Qué mostrar según la dirección ----- */
+  const resolver = () => {
+    const id = location.hash.replace('#', '');
+    certs.some(c => c.id === id) ? verDetalle(id) : verLista();
+  };
+
+  window.addEventListener('hashchange', resolver);
+
+  // En captura, para correr antes que el visor: si está abierto, las teclas son suyas
+  window.addEventListener('keydown', e => {
+    if (Visor.abierto || !location.hash) return;
+    const id = location.hash.replace('#', '');
+    const i = certs.findIndex(c => c.id === id);
+    if (i < 0) return;
+    if (e.key === 'ArrowLeft')  location.hash = certs[(i - 1 + certs.length) % certs.length].id;
+    if (e.key === 'ArrowRight') location.hash = certs[(i + 1) % certs.length].id;
+    if (e.key === 'Escape')     { history.pushState('', '', location.pathname); verLista(); }
+  }, true);
+
+  resolver();
 }
 
 /* ---------- 6. NOVEDADES ---------- */
@@ -399,6 +491,115 @@ function initFormulario() {
 }
 
 /* ---------- Arranque ---------- */
+/* ---------- PROYECTOS DESTACADOS (portada) ---------- */
+function renderDestacadas() {
+  const host = document.getElementById('obrasDestacadas');
+  if (!host || !CONFIG.destacadas) return;
+
+  const { titulo, acento, emblematicas } = CONFIG.destacadas;
+
+  // Se toman las obras en el orden de la lista, y solo las que tienen foto
+  const obras = emblematicas
+    .map(id => CONFIG.proyectos.find(p => p.id === id))
+    .filter(o => o && o.image);
+
+  if (!obras.length) return;
+
+  const fotos = obras.map((o, i) => `
+      <button type="button" class="strip__item${i === 0 ? ' is-active' : ''}"
+              style="background-image:url('${o.image}')"
+              data-indice="${i}" aria-label="${o.nombre}"></button>`).join('');
+
+  host.innerHTML = `
+    <div class="wrap strip__head reveal">
+      <h2 class="strip__title">${titulo} <span>${acento}</span></h2>
+      <div class="roadline"></div>
+    </div>
+
+    <div class="strip__row" id="stripRow">${fotos}
+    </div>
+
+    <div class="strip__panel">
+      <div class="wrap strip__panel-inner">
+        <h3 class="strip__name" id="stripName"></h3>
+        <p class="strip__meta" id="stripMeta"></p>
+        <p class="strip__desc" id="stripDesc"></p>
+      </div>
+    </div>`;
+
+  initDestacadas(obras);
+}
+
+function initDestacadas(obras) {
+  const fila = document.getElementById('stripRow');
+  const nombre = document.getElementById('stripName');
+  const meta = document.getElementById('stripMeta');
+  const desc = document.getElementById('stripDesc');
+  const fotos = [...fila.querySelectorAll('.strip__item')];
+
+  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const panel = nombre.closest('.strip__panel-inner');
+
+  let actual = 0;
+  let timer = null;
+
+  const nombreDistrito = (id) => {
+    const d = CONFIG.cobertura.find(x => x.id === id);
+    return d ? d.nombre : '';
+  };
+
+  const mostrar = (i) => {
+    actual = (i + obras.length) % obras.length;
+    fotos.forEach((f, n) => f.classList.toggle('is-active', n === actual));
+
+    const o = obras[actual];
+    panel.classList.add('is-changing');
+
+    setTimeout(() => {
+      nombre.textContent = o.nombre;
+      meta.textContent = `${nombreDistrito(o.distrito)} · ${o.ano}`;
+      desc.textContent = o.descripcion;
+      panel.classList.remove('is-changing');
+    }, sinMovimiento ? 0 : 200);
+  };
+
+  const arrancar = () => {
+    if (sinMovimiento) return;
+    detener();
+    timer = setInterval(() => mostrar(actual + 1), CONFIG.destacadas.intervalo || 5000);
+  };
+  const detener = () => { if (timer) clearInterval(timer); timer = null; };
+
+  fotos.forEach((f, i) => {
+    f.addEventListener('click', () => { mostrar(i); arrancar(); });
+    f.addEventListener('focus', () => mostrar(i));
+    f.addEventListener('mouseenter', () => { mostrar(i); detener(); });
+  });
+
+  fila.addEventListener('mouseleave', arrancar);
+  document.addEventListener('visibilitychange', () => (document.hidden ? detener() : arrancar()));
+
+  mostrar(0);
+  arrancar();
+}
+
+/* ---------- FRANJA DE SELLOS ISO (portada) ---------- */
+function renderIsoBand() {
+  const host = document.getElementById('isoBand');
+  if (!host) return;
+
+  host.innerHTML = CONFIG.certificaciones.map(c => {
+    const norma = c.titulo.split(':')[0];
+    const contenido = c.sello
+      ? `<img src="${c.sello}" alt="Sello ${norma}" loading="lazy">`
+      : `<span class="seal__fallback"><b>ISO</b>${norma.replace('ISO ', '')}</span>`;
+    return `
+      <a class="iso" href="certificaciones.html" title="${c.titulo} — ${c.nombre}">
+        ${contenido}
+      </a>`;
+  }).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderHero();
   initVisor();
@@ -408,6 +609,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSellos();
   renderServicios();
   renderCertificaciones();
+  renderDestacadas();
+  renderIsoBand();
   renderNovedades();
   renderContacto();
   initFormulario();

@@ -158,6 +158,23 @@ const CONFIG = {
     ]
   },
 
+  /* ---------- SECCIÓN PROYECTOS DE LA PORTADA ----------
+     emblematicas : ids de las obras que se muestran, en este orden.
+                    Las fotos, nombres y descripciones salen de 'proyectos',
+                    así que no se repite información.
+     intervalo    : milisegundos entre una foto y la siguiente.            */
+  destacadas: {
+    titulo: 'Nuestros',
+    acento: 'Proyectos',
+    intervalo: 5000,
+    emblematicas: [
+      'av-betancourt',
+      'parque-justicia',
+      'mercurio-alto',
+      'pasaje-venus'
+    ]
+  },
+
   /* ---------- Servicios (páginas Inicio y Servicios) ---------- */
   servicios: [
     {
@@ -209,7 +226,8 @@ const CONFIG = {
       vigencia: '04.12.2026',
       pdf: 'docs/ISO_CALIDAD_9001_B_M.pdf',
       icono: 'fas fa-certificate',
-      sello: ''
+      sello: '',
+      imagen: 'images/certificados/ISO9001.jpg'
     },
     {
       id: 'iso45001',
@@ -220,7 +238,8 @@ const CONFIG = {
       vigencia: '04.12.2026',
       pdf: 'docs/ISO_SEGURIDAD_45001_B_M.pdf',
       icono: 'fas fa-helmet-safety',
-      sello: ''
+      sello: '',
+      imagen: 'images/certificados/ISO45001.jpg'
     },
     {
       id: 'iso37001',
@@ -231,7 +250,8 @@ const CONFIG = {
       vigencia: '04.12.2026',
       pdf: 'docs/ISO_ANTISOBORNO_37001_B_M.pdf',
       icono: 'fas fa-scale-balanced',
-      sello: ''
+      sello: '',
+      imagen: 'images/certificados/ISO37001.jpg'
     },
     {
       id: 'iso14001',
@@ -240,9 +260,10 @@ const CONFIG = {
       descripcion: 'Ordena el manejo de residuos, emisiones y afectaciones al entorno durante la ejecución.',
       numero: 'SCC/INT/2512CR/22140',
       vigencia: '04.12.2026',
-      pdf: 'docs/ISO_AMBIENTAL_14005_B_M.pdf',
+      pdf: 'docs/ISO_AMBIENTAL_14001_B_M.pdf',
       icono: 'fas fa-leaf',
-      sello: ''
+      sello: '',
+      imagen: 'images/certificados/ISO14001.jpg'
     }
   ],
 
