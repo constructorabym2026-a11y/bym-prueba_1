@@ -37,7 +37,7 @@ const CONFIG = {
       },
       {
         palabra: 'SEGURIDAD',
-        imagen: 'images/venus.jpg',
+        imagen: 'images/calles54_5.jpg',
         obra: 'Pasaje Venus, Los Olivos · 2025'
       },
       {
@@ -47,7 +47,7 @@ const CONFIG = {
       },
       {
         palabra: 'CALIDAD',
-        imagen: 'images/patria.jpg',
+        imagen: 'images/justicia_1.jpg',
         obra: 'A.H. Patria Nueva, Los Olivos · 2025'
       }
     ]
@@ -104,7 +104,7 @@ const CONFIG = {
       id: 'pistas',
       nombre: 'Pistas y pavimentación',
       tono: 'navy',
-      reverso: 'images/calles54_2.jpg',
+      reverso: 'images/beta_6.jpg',
       descripcion: 'Pavimento de concreto y asfalto sobre base compactada, con señalización y control de calidad en cada capa.',
       imagenes: [
         'images/calles54.jpg',
@@ -128,7 +128,7 @@ const CONFIG = {
       id: 'contencion',
       nombre: 'Muros y escaleras',
       tono: 'steel',
-      reverso: 'images/rosa_3.jpg',
+      reverso: 'images/padua_cartel.jpg',
       descripcion: 'Muros de contención y escaleras de acceso en laderas y asentamientos humanos, donde el terreno exige solución estructural.',
       imagenes: [
         'images/rosa.jpg',
@@ -143,7 +143,7 @@ const CONFIG = {
   especialidades: {
     titulo: 'Nuestras',
     acento: 'Especialidades',
-    fondo: 'images/justicia_4.jpg'
+    fondo: 'images/virgen.jpg'
   },
 
   /* ---------- PÁGINA NOSOTROS ----------
@@ -152,9 +152,9 @@ const CONFIG = {
   nosotros: {
     mosaico: [
       'images/equipo_1.jpg',
-      'images/justicia_5.jpg',
-      'images/venus_4.jpg',
-      'images/rosa_4.jpg'
+      'images/beta.jpg',
+      'images/justicia_8.jpg',
+      'images/virgen.jpg'
     ]
   },
 
@@ -275,55 +275,21 @@ const CONFIG = {
      empresa          : '' si la ejecutó B&M; si no, el texto que
                         quieras mostrar en la tarjeta
      galeria          : archivos dentro de /images
+     orden            : posición de la tarjeta en cada vista (1 = la
+                        primera, de izquierda a derecha / arriba).
+                        Una clave por vista donde aparece la obra:
+                        'todos' (proyectos.html sin filtro) y el id
+                        de cada rubro en el que entra (el de 'rubro'
+                        y, si tiene, el de 'rubroSecundario').
+                        No hace falta reordenar el array ni tocar
+                        otras obras: dos obras pueden repetir número,
+                        y una obra sin 'orden' (o sin esa clave) sale
+                        al final, en el orden en que aparece aquí.
+                        Ej.: orden: { todos: 3, pistas: 1 }
      ============================================================ */
   proyectos: [
 
     /* ---------- B&M ---------- */
-    {
-      id: 'padua-movilidad',
-      nombre: 'Creación del servicio de movilidad urbana — San Antonio de Padua',
-      cliente: 'Municipalidad Distrital de Los Olivos',
-      distrito: 'los-olivos',
-      ubicacion: 'Asoc. de Vivienda San Antonio de Padua, Los Olivos',
-      ano: 2024,
-      estado: 'ejecutada',
-      empresa: '',
-      rubro: 'pistas',
-      rubroSecundario: 'espacios',
-      descripcion: 'Creación del servicio de movilidad urbana con infraestructura vial y peatonal en los pasajes de la asociación de vivienda.',
-      image: '',
-      galeria: []
-    },
-    {
-      id: 'chasquitambo',
-      nombre: 'Mejoramiento de movilidad urbana — Jirón Chasquitambo',
-      cliente: 'Municipalidad Distrital de Los Olivos',
-      distrito: 'los-olivos',
-      ubicacion: 'Jr. Chasquitambo, cuadras 5 y 6, Los Olivos',
-      ano: 2024,
-      estado: 'ejecutada',
-      empresa: '',
-      rubro: 'pistas',
-      rubroSecundario: 'espacios',
-      descripcion: 'Pistas, veredas accesibles, sardineles y áreas verdes ejecutados como un solo proyecto de movilidad.',
-      image: '',
-      galeria: []
-    },
-    {
-      id: 'tulipanes-jazmines',
-      nombre: 'Veredas, sardinel y área verde — Los Tulipanes y Los Jazmines',
-      cliente: 'Municipalidad Distrital de Los Olivos',
-      distrito: 'los-olivos',
-      ubicacion: 'AA.HH. Los Olivos de Pro, Los Olivos',
-      ano: 2024,
-      estado: 'ejecutada',
-      empresa: '',
-      rubro: 'espacios',
-      rubroSecundario: '',
-      descripcion: 'Construcción de veredas, sardineles y áreas verdes en las calles Los Tulipanes y Los Jazmines.',
-      image: '',
-      galeria: []
-    },
     {
       id: 'calle-17',
       nombre: 'Renovación de pavimento, vereda y sardinel — Calle 17',
@@ -334,10 +300,11 @@ const CONFIG = {
       estado: 'ejecutada',
       empresa: '',
       rubro: 'pistas',
-      rubroSecundario: 'espacios',
+      rubroSecundario: '',
       descripcion: 'Renovación de pavimento, vereda y sardinel, con construcción de rampas de acceso.',
       image: 'images/calle_17.jpg',
-      galeria: ['calle_17.jpg', 'calle_17_1.jpg', 'calle_17_2.jpg', 'calle_17_3.jpg', 'calle_17_4.jpg', 'calle_17_5.jpg']
+      galeria: ['calle_17.jpg', 'calle_17_2.jpg',"calle_17_1.jpg", 'calle_17_5.jpg'],
+      orden: { todos: 7, pistas: 4 }
     },
     {
       id: 'parque-justicia',
@@ -352,7 +319,8 @@ const CONFIG = {
       rubroSecundario: '',
       descripcion: 'Mejoramiento integral del parque: áreas verdes, mobiliario urbano, iluminación y accesibilidad.',
       image: 'images/justicia_1.jpg',
-      galeria: ['justicia_1.jpg', 'justicia_2.jpg', 'justicia_3.jpg', 'justicia_4.jpg', 'justicia_5.jpg', 'justicia_6.jpg', 'justicia_7.jpg']
+      galeria: ['justicia_1.jpg', 'justicia_2.jpg', 'justicia_3.jpg', 'justicia_4.jpg', 'justicia_6.jpg', 'justicia_8.jpg', 'justicia_9.jpg','justicia_11.jpg','justicia_10.jpg'],
+      orden: { todos: 5, espacios: 2 }
     },
     {
       id: 'chillon',
@@ -361,13 +329,14 @@ const CONFIG = {
       distrito: 'los-olivos',
       ubicacion: 'Calles internas del AA.HH. Municipal Chillón, Los Olivos',
       ano: 2026,
-      estado: 'ejecucion',
+      estado: 'ejecutada',
       empresa: '',
-      rubro: 'pistas',
+      rubro: 'espacios',
       rubroSecundario: '',
       descripcion: 'Mejoramiento de la movilidad urbana en calles internas, con pavimentación y señalización.',
-      image: 'images/chillon_1.jpg',
-      galeria: ['chillon_1.jpg', 'chillon_2.jpg', 'chillon_3.jpg', 'chillon_4.jpg', 'chillon_5.jpg', 'chillon_6.jpg']
+      image: 'images/chillon_8.jpg',
+      galeria: ['chillon_1.jpg', 'chillon_2.jpg', 'chillon_3.jpg', 'chillon_4.jpg', 'chillon_5.jpg', 'chillon_6.jpg','chillon_8.jpg','chillon_7.jpg'],
+      orden: { todos: 8, espacios: 5 }
     },
     {
       id: 'calle-jazmines',
@@ -376,28 +345,14 @@ const CONFIG = {
       distrito: 'los-olivos',
       ubicacion: 'Calle Los Jazmines, desde Calle Aquia hasta Av. Universitaria, Los Olivos',
       ano: 2026,
-      estado: 'ejecucion',
+      estado: 'ejecutado',
       empresa: '',
       rubro: 'pistas',
       rubroSecundario: '',
       descripcion: 'Renovación de pavimento y señalización para mejorar la seguridad vial del sector.',
-      image: 'images/jazmines.jpg',
-      galeria: ['jazmines.jpg', 'jazmines_1.jpg', 'jazmines_2.jpg', 'jazmines_3.jpg', 'jazmines_4.jpg', 'jazmines_5.jpg']
-    },
-    {
-      id: 'av-central',
-      nombre: 'Renovación de calzada y señales de tráfico — Av. Central',
-      cliente: 'Municipalidad Distrital de Los Olivos',
-      distrito: 'los-olivos',
-      ubicacion: 'Av. Central, desde Av. Canta Callao hasta Av. Alfredo Mendiola, Los Olivos',
-      ano: 2026,
-      estado: 'ejecucion',
-      empresa: '',
-      rubro: 'pistas',
-      rubroSecundario: '',
-      descripcion: 'Renovación integral de calzada y señalización en una de las vías principales del distrito.',
-      image: '',
-      galeria: []
+      image: 'images/jazmines_2.jpg',
+      galeria: ['jazmines.jpg', 'jazmines_1.jpg', 'jazmines_2.jpg', 'jazmines_3.jpg', 'jazmines_4.jpg', 'jazmines_5.jpg'],
+      orden: { todos: 4, pistas: 3 }
     },
 
     /* ---------- Obras del grupo (Grupo Zaragoza) ----------
@@ -416,7 +371,8 @@ const CONFIG = {
       rubroSecundario: '',
       descripcion: 'Renovación integral de pavimento y señalización de tránsito, orientada a optimizar las condiciones de la infraestructura vial.',
       image: 'images/calles54.jpg',
-      galeria: ['calles54.jpg', 'calles54_1.jpg', 'calles54_2.jpg', 'calles54_3.jpg', 'calles54_4.jpg', 'calles54_5.jpg', 'calles54_6.jpg', 'calles54_7.jpg', 'calles54_8.jpg']
+      galeria: ['calles54.jpg', 'calles54_1.jpg', 'calles54_2.jpg', 'calles54_3.jpg', 'calles54_4.jpg', 'calles54_5.jpg', 'calles54_6.jpg', 'calles54_7.jpg', 'calles54_8.jpg'],
+      orden: { todos: 6, pistas: 2 }
     },
     {
       id: 'mercurio-alto',
@@ -428,10 +384,11 @@ const CONFIG = {
       estado: 'ejecutada',
       empresa: 'Obra del Grupo Zaragoza',
       rubro: 'contencion',
-      rubroSecundario: 'espacios',
+      rubroSecundario: '',
       descripcion: 'Ejecución de obras de infraestructura urbana orientadas a habilitar y mejorar la circulación peatonal mediante escaleras y/o rampas, complementadas con la construcción de un muro de contención para garantizar la estabilidad del terreno.',
       image: 'images/rosa.jpg',
-      galeria: ['rosa.jpg', 'rosa_1.jpg', 'rosa_2.jpg', 'rosa_3.jpg', 'rosa_4.jpg', 'rosa_5.jpg']
+      galeria: ['rosa.jpg', 'rosa_1.jpg', 'rosa_2.jpg', 'rosa_3.jpg', 'rosa_4.jpg', 'rosa_5.jpg'],
+      orden: { todos: 9, contencion: 3 }
     },
     {
       id: 'pasaje-venus',
@@ -446,7 +403,8 @@ const CONFIG = {
       rubroSecundario: 'pistas',
       descripcion: 'Ejecución de obras de infraestructura urbana destinadas a habilitar y mejorar la circulación peatonal mediante la construcción de pavimento, veredas, escaleras y/o rampas, complementadas con la edificación de un muro de contención y otros activos.',
       image: 'images/venus.jpg',
-      galeria: ['venus.jpg', 'venus_1.jpg', 'venus_2-1.jpg', 'venus_2.jpg', 'venus_3.jpg', 'venus_4.jpg', 'venus_5.jpg', 'venus_6.jpg', 'venus_7.jpg', 'venus_8.jpg', 'venus_9.jpg']
+      galeria: ['venus.jpg', 'venus_1.jpg', 'venus_2-1.jpg', 'venus_2.jpg', 'venus_3.jpg', 'venus_4.jpg', 'venus_5.jpg', 'venus_6.jpg', 'venus_7.jpg', 'venus_8.jpg', 'venus_9.jpg'],
+      orden: { todos: 10, contencion: 4, pistas: 5 }
     },
     {
       id: 'escalera-padua',
@@ -454,30 +412,17 @@ const CONFIG = {
       cliente: 'Municipalidad Distrital de Los Olivos',
       distrito: 'los-olivos',
       ubicacion: 'Pasajes A, D y H, Asoc. de Vivienda San Antonio de Padua, Los Olivos',
-      ano: 2025,
+      ano: 2026,
       estado: 'ejecutada',
       empresa: 'Obra del Grupo Zaragoza',
       rubro: 'contencion',
-      rubroSecundario: '',
-      descripcion: 'Renovación de escalera de acceso y circulación peatonal vertical, mejorando la seguridad.',
-      image: '',
-      galeria: []
-    },
-    {
-      id: 'av-17-noviembre',
-      nombre: 'Mejoramiento de movilidad urbana — Av. 17 de Noviembre',
-      cliente: 'Municipalidad Distrital de Independencia',
-      distrito: 'independencia',
-      ubicacion: 'Av. 17 de Noviembre, Eje Zonal Independencia',
-      ano: 2025,
-      estado: 'ejecutada',
-      empresa: 'Obra del Grupo Zaragoza',
-      rubro: 'pistas',
       rubroSecundario: 'espacios',
-      descripcion: 'Proyecto integral de movilidad urbana con infraestructura vial, peatonal y servicios complementarios.',
-      image: '',
-      galeria: []
+      descripcion: 'Renovación de escalera de acceso y circulación peatonal vertical, mejorando la seguridad.',
+      image: 'images/padua_cartel.jpg',
+      galeria: ['padua_1.jpg','padua_2.jpg','padua_4.jpg','padua_6.jpg','padua_7.jpg','padua_8.jpg','padua_9.jpg','padua_cartel.jpg','padua_v_1.jpg','padua_v_3.jpg','padua_v_4.jpg','padua_v_5.jpg','padua_v_6.jpg','padua_v_7.jpg','padua_v_8.jpg','padua_v_9.jpg'],
+      orden: { todos: 3, contencion: 1 }
     },
+
     {
       id: 'parque-peru-japon',
       nombre: 'Infraestructura de almacenamiento — Parque Perú Japón',
@@ -490,23 +435,25 @@ const CONFIG = {
       rubro: 'espacios',
       rubroSecundario: '',
       descripcion: 'Construcción de infraestructura de almacenamiento como equipamiento del parque.',
-      image: '',
-      galeria: []
+      image: 'images/peru-japon_7.jpg',
+      galeria: ["peru-japon_1.jpg","peru-japon_2.jpg","peru-japon_3.jpg","peru_japon_4.jpg","peru-japon_5.jpg","peru-japon_6.jpg","peru-japon_7.jpg"],
+      orden: { todos: 2, espacios: 3 }
     },
     {
-      id: 'nueva-amistad',
-      nombre: 'Renovación de pavimento y vereda — Nueva Amistad (Etapa 1)',
+      id: 'geriatrico',
+      nombre: 'Creación del servicio de atención y cuidado para personas con discapacidad — Santa Rosa de Naranjal',
       cliente: 'Municipalidad Distrital de Los Olivos',
       distrito: 'los-olivos',
-      ubicacion: 'Manzanas A, B, B1, C y D, AA.HH. Nueva Amistad, Los Olivos',
-      ano: 2025,
+      ubicacion: 'AA.HH. Santa Rosa de Naranjal, Los Olivos',
+      ano: 2026,
       estado: 'ejecutada',
-      empresa: 'Obra del Grupo Zaragoza',
-      rubro: 'pistas',
-      rubroSecundario: 'espacios',
-      descripcion: 'Renovación de pavimento y vereda con obras exteriores en múltiples manzanas residenciales.',
-      image: '',
-      galeria: []
+      empresa: 'Obra del Consorcio Viñac',
+      rubro: 'espacios',
+      rubroSecundario: '',
+      descripcion: 'Creación del servicio de atención y cuidado para personas en condición de discapacidad en el local geriátrico y de discapacidad del AA.HH. Santa Rosa de Naranjal, con infraestructura de segundo nivel para su funcionamiento.',
+      image: 'images/geri_11.jpg',
+      galeria: ['geri_1.jpg','geri_2.jpg','geri_3.jpg','geri_4.jpg','geri_5.jpg','geri_6.jpg','geri_7.jpg','geri_8.png','geri_9.jpg','geri_10.jpg','geri_11.jpg'],
+      orden: { todos: 11, espacios: 4 }
     },
     {
       id: 'av-betancourt',
@@ -518,10 +465,11 @@ const CONFIG = {
       estado: 'ejecutada',
       empresa: 'Obra del Grupo Zaragoza',
       rubro: 'pistas',
-      rubroSecundario: 'espacios',
+      rubroSecundario: '',
       descripcion: 'Mejoramiento del servicio de movilidad urbana en la Av. Rómulo Betancourt, entre la Av. Canta Callao y la Av. Central.',
       image: 'images/beta.jpg',
-      galeria: ['beta.jpg', 'beta_1.jpg', 'beta_2.jpg', 'beta_3.jpg', 'beta_4.jpg', 'beta_5.jpg', 'beta_6.jpg', 'beta_7.jpg']
+      galeria: ['beta.jpg', 'beta_1.jpg', 'beta_2.jpg','beta_9.jpg','beta_3.jpg', 'beta_4.jpg', 'beta_5.jpg', 'beta_6.jpg','beta_8.jpg', 'beta_7.jpg'],
+      orden: { todos: 12, pistas: 1 }
     },
     {
       id: 'parque-virgen-carmen',
@@ -536,7 +484,8 @@ const CONFIG = {
       rubroSecundario: '',
       descripcion: 'Ejecución de obras de infraestructura urbana destinadas a habilitar y mejorar la circulación peatonal mediante escaleras, rampas y sardineles, complementadas con la instalación de mobiliario urbano y obras exteriores.',
       image: 'images/virgen.jpg',
-      galeria: ['virgen.jpg', 'virgen_1.jpg', 'virgen_2.jpg', 'virgen_3.jpg', 'virgen_4.jpg', 'virgen_5.jpg', 'virgen_6.jpg', 'virgen_7.jpg', 'virgen_8.jpg']
+      galeria: ['virgen.jpg', 'virgen_1.jpg', 'virgen_2.jpg', 'virgen_3.jpg', 'virgen_4.jpg', 'virgen_5.jpg', 'virgen_6.jpg', 'virgen_7.jpg', 'virgen_8.jpg'],
+      orden: { todos: 1, espacios: 1 }
     },
     {
       id: 'patria-nueva-movilidad',
@@ -547,11 +496,12 @@ const CONFIG = {
       ano: 2025,
       estado: 'ejecutada',
       empresa: 'Obra del Grupo Zaragoza',
-      rubro: 'pistas',
+      rubro: 'contencion',
       rubroSecundario: '',
       descripcion: 'Ejecución de obras de infraestructura vial y urbana orientadas a implementar y mejorar el servicio de movilidad en las vías internas del ámbito de intervención, optimizando las condiciones de transitabilidad.',
       image: 'images/patria.jpg',
-      galeria: ['patria.jpg', 'patria_1.jpg', 'patria_2.jpg', 'patria_3.jpg', 'patria_4.jpg', 'patria_5.jpg', 'patria_6.jpg']
+      galeria: ['patria.jpg', 'patria_1.jpg', 'patria_2.jpg', 'patria_3.jpg', 'patria_4.jpg', 'patria_5.jpg', 'patria_6.jpg'],
+      orden: { todos: 13, contencion: 2 }
     },
     {
       id: 'rosales-pro-3era-etapa',
@@ -566,7 +516,8 @@ const CONFIG = {
       rubroSecundario: '',
       descripcion: 'Construcción de vereda en las calles internas del A.H. Rosales de Pro, tercera etapa.',
       image: 'images/rosales3.jpg',
-      galeria: ['rosales3.jpg', 'rosales3_1.jpg', 'rosales3_2.jpg', 'rosales3_3.jpg', 'rosales3_4.jpg', 'rosales3_5.jpg', 'rosales3_6.jpg', 'rosales3_7.jpg']
+      galeria: ['rosales3.jpg', 'rosales3_1.jpg', 'rosales3_2.jpg', 'rosales3_3.jpg', 'rosales3_4.jpg', 'rosales3_5.jpg', 'rosales3_6.jpg', 'rosales3_7.jpg'],
+      orden: { todos: 14, espacios: 6 }
     }
   ],
 
