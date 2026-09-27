@@ -49,16 +49,31 @@ function tarjetaObra(obra) {
     </article>`;
 }
 
-/* ---------- 2. LISTADO ---------- */
+/* ---------- 2. LISTADO ----------
+   Orden de las tarjetas: cada obra puede traer un campo `orden` en
+   config.js, ej. { todos: 1, pistas: 3 }. La clave es la vista
+   ('todos' o el id de un rubro) y el valor es la posición dentro de
+   esa vista (1 = primera, de izquierda a derecha). Una obra sin
+   `orden` (o sin la clave de esa vista) sale al final, en el orden
+   en que aparece en el array.                                      */
+function ordenEnVista(obra, vista) {
+  const n = obra.orden && obra.orden[vista];
+  return typeof n === 'number' ? n : Infinity;
+}
+
 function renderObras(rubro = 'todos', distrito = null) {
   const host = document.getElementById('projectsGrid');
   if (!host) return;
 
   const limite = Number(host.dataset.limite) || 0;
 
-  let lista = CONFIG.proyectos;
-  if (rubro !== 'todos') lista = lista.filter(p => p.rubro === rubro || p.rubroSecundario === rubro);
-  if (distrito) lista = lista.filter(p => p.distrito === distrito);
+  let lista = CONFIG.proyectos.map((p, i) => ({ p, i }));
+  if (rubro !== 'todos') lista = lista.filter(({ p }) => p.rubro === rubro || p.rubroSecundario === rubro);
+  if (distrito) lista = lista.filter(({ p }) => p.distrito === distrito);
+
+  lista.sort((a, b) => (ordenEnVista(a.p, rubro) - ordenEnVista(b.p, rubro)) || (a.i - b.i));
+  lista = lista.map(({ p }) => p);
+
   if (limite) lista = lista.slice(0, limite);
 
   host.innerHTML = lista.length
